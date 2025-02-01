@@ -15,15 +15,15 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import controlador.EmpleadorControlador;
-import controlador.PostulanteControlador;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.swing.JFileChooser;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.EmpleadorModelo;
-import modelo.PostulanteModelo;
+
 
 /**
  *
@@ -182,7 +182,6 @@ public class EmpleadorVista extends javax.swing.JInternalFrame {
         jLabel7.setText("Fecha de nacimiento:");
 
         txtCedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCedula.setText("jTextField1");
         txtCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCedulaActionPerformed(evt);
@@ -190,13 +189,10 @@ public class EmpleadorVista extends javax.swing.JInternalFrame {
         });
 
         txtApellidos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtApellidos.setText("jTextField3");
 
         txtFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtFechaNacimiento.setText("jTextField4");
 
         txtNombres.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtNombres.setText("jTextField1");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Dirección:");
@@ -205,10 +201,8 @@ public class EmpleadorVista extends javax.swing.JInternalFrame {
         jLabel9.setText("Correo Electrónico:");
 
         txtDireccion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtDireccion.setText("jTextField5");
 
         txtCorreo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCorreo.setText("jTextField6");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Empresa:");
@@ -235,7 +229,6 @@ public class EmpleadorVista extends javax.swing.JInternalFrame {
         });
 
         cbEmpresa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbEmpresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administración", "Dirección de Empresas", "Comercio", "Comunicación Corporativa", "Contabilidad", "Criminología", "Derecho", "Desarrolo de Software", "Diseño Gráfico", "Enfermería", "Fisioterapia", "Marketing", "Psicología", "Sociología" }));
         cbEmpresa.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbEmpresaItemStateChanged(evt);
@@ -252,7 +245,6 @@ public class EmpleadorVista extends javax.swing.JInternalFrame {
         });
 
         cbCargo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administración", "Dirección de Empresas", "Comercio", "Comunicación Corporativa", "Contabilidad", "Criminología", "Derecho", "Desarrolo de Software", "Diseño Gráfico", "Enfermería", "Fisioterapia", "Marketing", "Psicología", "Sociología" }));
         cbCargo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbCargoItemStateChanged(evt);
@@ -336,16 +328,7 @@ public class EmpleadorVista extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel7)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jLabel11)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(cbCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(cbEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(21, 21, 21)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
@@ -362,7 +345,15 @@ public class EmpleadorVista extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPdf, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnPdf, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cbCargo, 0, 229, Short.MAX_VALUE)
+                                    .addComponent(cbEmpresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(241, 241, 241)
                         .addComponent(jLabel1)))
@@ -402,7 +393,7 @@ public class EmpleadorVista extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(cbEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(cbCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -416,7 +407,7 @@ public class EmpleadorVista extends javax.swing.JInternalFrame {
                     .addComponent(btnPdf))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -533,7 +524,7 @@ public class EmpleadorVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        e.setNombres(txtNombres.getText());
+
         e.setCedula(txtCedula.getText());
         e.setNombres(txtNombres.getText());
         e.setApellidos(txtApellidos.getText());

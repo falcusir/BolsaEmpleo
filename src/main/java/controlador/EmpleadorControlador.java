@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.EmpleadorModelo;
-import modelo.MEquipoModelo;
+
 
 
 /**
@@ -111,12 +111,12 @@ public class EmpleadorControlador {
      
      public void actualizarEmpleador(EmpleadorModelo p) {
         try {
-            String sentenciaSQL = "call sp_actualizarEmpleador1('"+p.getCedula()+"',"+p.getNombres()+"','"+p.getApellidos()+"','"+p.getDireccion()+"','"+p.getCorreoElectronico()+"','"+p.getFechaNacimiento()+"','"+p.getEmpresa()+"','"+p.getCargo()+"');";
+            String sentenciaSQL = "call sp_actualizarEmpleador1('"+p.getCedula()+"','"+p.getNombres()+"','"+p.getApellidos()+"','"+p.getDireccion()+"','"+p.getCorreoElectronico()+"','"+p.getFechaNacimiento()+"','"+p.getEmpresa()+"','"+p.getCargo()+"');";
             //String sentenciaSQL = "sp_actualizarMiembroE ('"+mem.getNombre()+"','"+mem.getApellido()+"','"+mem.getCedula()+"','"+mem.getFechaNac()+"','"+mem.getRol()+"','"+mem.getCorreo()+"','"+mem.getFechaIngesoPro()+"','"+mem.getEstado()+"');";
             ejecutar = (PreparedStatement) conectado.prepareCall(sentenciaSQL);
             int resultado1 = ejecutar.executeUpdate();
             if (resultado1 > 0) {
-                JOptionPane.showMessageDialog(null, "Miembro del Equipo Actualizado con Éxito");
+                JOptionPane.showMessageDialog(null, "Empleador Actualizado con Éxito");
             
                 ejecutar.close();
             } else {
