@@ -37,7 +37,7 @@ public class MenuVista extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jdpPedidos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(748, 549));
@@ -125,8 +125,13 @@ public class MenuVista extends javax.swing.JFrame {
 
         jMenu3.setText("Examen");
 
-        jMenuItem4.setText("Grupo2");
-        jMenu3.add(jMenuItem4);
+        jdpPedidos.setText("Grupo2");
+        jdpPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jdpPedidosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jdpPedidos);
 
         jMenuBar1.add(jMenu3);
 
@@ -174,6 +179,13 @@ public class MenuVista extends javax.swing.JFrame {
         ca.show();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jdpPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdpPedidosActionPerformed
+        PedidosVista pv = new PedidosVista();
+        jdpMenuBolsa.add(pv);
+        pv.show();
+        
+    }//GEN-LAST:event_jdpPedidosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -218,8 +230,8 @@ public class MenuVista extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JDesktopPane jdpMenuBolsa;
+    private javax.swing.JMenuItem jdpPedidos;
     // End of variables declaration//GEN-END:variables
 }
