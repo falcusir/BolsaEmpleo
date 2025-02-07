@@ -38,8 +38,8 @@ public class PedidosControlador {
             resultado = ejecutar.executeQuery(); // QUERY -->recibo un conjunto de datos
             int cont = 1;
             while (resultado.next()) {
-                Object[] obpedidos = new Object[8]; //instancia un arreglo tipo objeto de 6
-                for (int i = 1; i < 8; i++) {
+                Object[] obpedidos = new Object[9]; //instancia un arreglo tipo objeto de 6
+                for (int i = 1; i < 9; i++) {
                     obpedidos[i] = resultado.getObject(i+1);//obtener los valores de cada columna
                 }
                 obpedidos[0]=cont;
