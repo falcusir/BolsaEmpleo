@@ -28,7 +28,7 @@ public class PedidosVista extends javax.swing.JInternalFrame {
     
     public void SetModel() {
         //Estructura estaica de tipo cadena con las cabeceras o titulos de la jtable
-        String[] cabecera = {"Nro.", "Fecha Pedido", "Fecha Entrega", "Monto", "Estado",};
+        String[] cabecera = {"Nro.", "Fecha Pedido", "Fecha Entrega", "Estado","Producto","Precio Unitario","Cantidad","Precio Total",};
         //SOBRESCRIBIENDO EL PAmodelo.set
         modelo.setColumnIdentifiers(cabecera);
         tblListarPedidos.setModel(modelo);
@@ -58,8 +58,6 @@ public class PedidosVista extends javax.swing.JInternalFrame {
     }
     
 
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -70,6 +68,7 @@ public class PedidosVista extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListarPedidos = new javax.swing.JTable();
+        btnNuevaBusqueda = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -86,7 +85,7 @@ public class PedidosVista extends javax.swing.JInternalFrame {
 
         btnBuscar.setBackground(new java.awt.Color(204, 255, 204));
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnBuscar.setText("BUSCAR");
+        btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -106,37 +105,48 @@ public class PedidosVista extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblListarPedidos);
 
+        btnNuevaBusqueda.setBackground(new java.awt.Color(255, 204, 204));
+        btnNuevaBusqueda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnNuevaBusqueda.setText("Nueva Búsqueda");
+        btnNuevaBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevaBusquedaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(btnBuscar))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(187, 187, 187)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(102, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnNuevaBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(243, 243, 243))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
+                    .addComponent(btnBuscar)
+                    .addComponent(btnNuevaBusqueda))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -146,16 +156,26 @@ public class PedidosVista extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String cedula = txtCedula.getText();
-        //limpiarTabla();
+        limpiarTabla();
         ArrayList<Object[]> listaFilas = pC.buscarPedidos(cedula);
         for (Object[] listaFila : listaFilas) {
             modelo.addRow(listaFila);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnNuevaBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaBusquedaActionPerformed
+        txtCedula.setText("");
+    }//GEN-LAST:event_btnNuevaBusquedaActionPerformed
 
+    private void limpiarTabla(){
+        int a= modelo.getRowCount()-1;
+        for (int i = a; i >=0; i--) {
+            modelo.removeRow(i);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnNuevaBusqueda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
